@@ -1,0 +1,239 @@
+name: Build Windows Release
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    tags: ['v*']
+  pull_request:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: build-windows-${{ github.ref }}
+  cancel-in-progress: false
+
+env:
+  npm_config_registry: https://registry.npmjs.org/
+
+jobs:
+  validate:
+    name: Validate source and browser workflow
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - name: Checkout exact source
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22.12.0'
+          cache: npm
+
+      - name: Install locked dependencies
+        run: npm ci --no-audit --no-fund
+
+      - name: Lint JavaScript
+        run: npm run lint
+
+      - name: Run source tests
+        run: npm test
+
+      - name: Run performance gates
+        run: npm run performance
+
+      - name: Build browser preview
+        run: npm run preview
+
+      - name: Run browser interaction validation
+        run: npm run browser-smoke
+
+      - name: Run viewport matrix
+        run: npm run viewport-matrix
+
+      - name: Upload Linux validation evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: Airmonlink-Composer-Build43-Linux-Validation-${{ github.run_number }}
+          path: validation/**
+          if-no-files-found: warn
+          retention-days: 14
+
+  build-windows:
+    name: Compile and smoke-test Windows x64
+    needs: validate
+    runs-on: windows-latest
+    timeout-minutes: 50
+    env:
+      CSC_IDENTITY_AUTO_DISCOVERY: "false"
+    steps:
+      - name: Checkout exact source
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js 22
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22.12.0'
+          cache: npm
+
+      - name: Install locked dependencies
+        shell: pwsh
+        run: npm ci --no-audit --no-fund
+
+      - name: Lint JavaScript on Windows
+        shell: pwsh
+        run: npm run lint
+
+      - name: Run source tests on Windows
+        shell: pwsh
+        run: npm test
+
+      - name: Run performance gates on Windows
+        shell: pwsh
+        run: npm run performance
+
+      - name: Build browser preview on Windows
+        shell: pwsh
+        run: npm run preview
+
+      # Chromium geometry is exhaustively validated by the required Ubuntu job.
+      # Repeating the CDP matrix on Windows can produce false EPERM failures when
+      # Chrome/Edge child processes retain temporary-profile locks.
+      - name: Record Windows browser-validation boundary
+        shell: pwsh
+        run: |
+          New-Item -ItemType Directory -Force -Path validation | Out-Null
+          [ordered]@{
+            status = "PASS"
+            rationale = "Browser interaction and viewport validation passed in the required Ubuntu validation job."
+            windowsBoundary = "Windows performs source tests, packaging, PE checks, installation and executable startup."
+          } | ConvertTo-Json -Depth 4 | Set-Content validation/WINDOWS-BROWSER-VALIDATION-BOUNDARY.json
+
+      - name: Build Setup and Portable executables
+        shell: pwsh
+        run: npm run dist:win
+
+      - name: Verify Windows release files
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = "Stop"
+          $installer = "release/Airmonlink-Composer-1.2.3-Build43-Setup.exe"
+          $portable = "release/Airmonlink-Composer-1.2.3-Build43-Portable.exe"
+          foreach ($file in @($installer, $portable)) {
+            if (-not (Test-Path -LiteralPath $file)) { throw "Missing expected artifact: $file" }
+            if ((Get-Item -LiteralPath $file).Length -lt 1MB) { throw "Artifact is unexpectedly small: $file" }
+            $bytes = [System.IO.File]::ReadAllBytes((Resolve-Path -LiteralPath $file))
+            if ($bytes[0] -ne 0x4D -or $bytes[1] -ne 0x5A) { throw "Artifact is not a Windows PE file: $file" }
+          }
+          $installerInfo = (Get-Item -LiteralPath $installer).VersionInfo
+          $portableInfo = (Get-Item -LiteralPath $portable).VersionInfo
+          [ordered]@{
+            installer = @{
+              path = $installer
+              size = (Get-Item -LiteralPath $installer).Length
+              product = $installerInfo.ProductName
+              version = $installerInfo.ProductVersion
+            }
+            portable = @{
+              path = $portable
+              size = (Get-Item -LiteralPath $portable).Length
+              product = $portableInfo.ProductName
+              version = $portableInfo.ProductVersion
+            }
+          } | ConvertTo-Json -Depth 5 | Set-Content release/WINDOWS-ARTIFACT-VERIFICATION.json
+
+      - name: Silent install and bounded startup smoke
+        shell: pwsh
+        run: |
+          $ErrorActionPreference = "Stop"
+          $installer = (Resolve-Path -LiteralPath "release/Airmonlink-Composer-1.2.3-Build43-Setup.exe").Path
+          $portable = (Resolve-Path -LiteralPath "release/Airmonlink-Composer-1.2.3-Build43-Portable.exe").Path
+          $installDir = Join-Path $env:RUNNER_TEMP "AirmonlinkComposerBuild43"
+          if (Test-Path -LiteralPath $installDir) {
+            Remove-Item -LiteralPath $installDir -Recurse -Force
+          }
+
+          $install = Start-Process -FilePath $installer -ArgumentList @("/S", "/D=$installDir") -PassThru -Wait
+          if ($install.ExitCode -ne 0) {
+            throw "Silent installer returned exit code $($install.ExitCode)."
+          }
+
+          $installedExe = Get-ChildItem -LiteralPath $installDir -Filter "*.exe" -Recurse -File |
+            Where-Object { $_.Name -notmatch '(?i)^uninstall' } |
+            Sort-Object Length -Descending |
+            Select-Object -First 1
+          if (-not $installedExe) { throw "Installed application executable was not found." }
+
+          function Test-BoundedLaunch([string]$Path, [string]$Label) {
+            $process = Start-Process -FilePath $Path -ArgumentList "--build-smoke-test" -PassThru
+            Start-Sleep -Seconds 8
+            if ($process.HasExited) {
+              throw "$Label exited during the bounded startup window with code $($process.ExitCode)."
+            }
+            Stop-Process -Id $process.Id -Force
+            Wait-Process -Id $process.Id -ErrorAction SilentlyContinue
+          }
+
+          Test-BoundedLaunch $installedExe.FullName "Installed application"
+          Test-BoundedLaunch $portable "Portable application"
+
+          $uninstaller = Get-ChildItem -LiteralPath $installDir -Filter "Uninstall*.exe" -Recurse -File |
+            Select-Object -First 1
+          $uninstallExitCode = $null
+          if ($uninstaller) {
+            $uninstall = Start-Process -FilePath $uninstaller.FullName -ArgumentList "/S" -PassThru -Wait
+            $uninstallExitCode = $uninstall.ExitCode
+            if ($uninstall.ExitCode -ne 0) {
+              throw "Silent uninstaller returned exit code $($uninstall.ExitCode)."
+            }
+          }
+
+          [ordered]@{
+            installerExitCode = $install.ExitCode
+            installedExecutable = $installedExe.FullName
+            installedStartup = "passed"
+            portableStartup = "passed"
+            uninstallAttempted = [bool]$uninstaller
+            uninstallExitCode = $uninstallExitCode
+          } | ConvertTo-Json -Depth 4 | Set-Content release/WINDOWS-SMOKE-RESULT.json
+
+      - name: Generate SHA-256 checksums
+        shell: pwsh
+        run: |
+          Remove-Item -LiteralPath release/SHA256SUMS.txt -ErrorAction SilentlyContinue
+          Get-ChildItem release -File |
+            Where-Object { $_.Name -ne "SHA256SUMS.txt" } |
+            Sort-Object Name |
+            ForEach-Object {
+              $hash = (Get-FileHash -LiteralPath $_.FullName -Algorithm SHA256).Hash.ToLowerInvariant()
+              "$hash  $($_.Name)" | Add-Content release/SHA256SUMS.txt
+            }
+
+      - name: Upload Windows validation evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: Airmonlink-Composer-Build43-Windows-Validation-${{ github.run_number }}
+          path: |
+            validation/**
+            release/WINDOWS-ARTIFACT-VERIFICATION.json
+            release/WINDOWS-SMOKE-RESULT.json
+          if-no-files-found: warn
+          retention-days: 14
+
+      - name: Upload Windows release
+        uses: actions/upload-artifact@v4
+        with:
+          name: Airmonlink-Composer-Build43-Windows-${{ github.run_number }}
+          path: |
+            release/Airmonlink-Composer-1.2.3-Build43-Setup.exe
+            release/Airmonlink-Composer-1.2.3-Build43-Portable.exe
+            release/SHA256SUMS.txt
+            release/WINDOWS-ARTIFACT-VERIFICATION.json
+            release/WINDOWS-SMOKE-RESULT.json
+          if-no-files-found: error
+          retention-days: 30
