@@ -1,0 +1,287 @@
+{
+  "status": "PASS",
+  "checks": [
+    {
+      "name": "Composer 3 mounted",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "name": "Canonical semantic model",
+      "status": "PASS",
+      "details": "{\"build\":43,\"mounted\":true,\"tabs\":6,\"activePanels\":1,\"legacySelectors\":0,\"visibleControls\":257,\"scoreViewport\":true,\"physicalPageService\":true,\"crossPageFlowService\":true,\"publicationProfile\":\"staff|A4|portrait|15|1|0-8\",\"commandGroups\":16,\"allControlsConnected\":true,\"canonicalModel\":true,\"directApi\":true,\"fourVoiceLayers\":true,\"independentModels\":0,\"partCount\":1,\"measureCount\":8,\"eventCount\":32,\"fourLayerPlayback\":true,\"midiModes\":true}"
+    },
+    {
+      "name": "Direct engine API",
+      "status": "PASS",
+      "details": "{\"build\":43,\"mounted\":true,\"tabs\":6,\"activePanels\":1,\"legacySelectors\":0,\"visibleControls\":257,\"scoreViewport\":true,\"physicalPageService\":true,\"crossPageFlowService\":true,\"publicationProfile\":\"staff|A4|portrait|15|1|0-8\",\"commandGroups\":16,\"allControlsConnected\":true,\"canonicalModel\":true,\"directApi\":true,\"fourVoiceLayers\":true,\"independentModels\":0,\"partCount\":1,\"measureCount\":8,\"eventCount\":32,\"fourLayerPlayback\":true,\"midiModes\":true}"
+    },
+    {
+      "name": "Exactly four voice layers",
+      "status": "PASS",
+      "details": "{\"build\":43,\"mounted\":true,\"tabs\":6,\"activePanels\":1,\"legacySelectors\":0,\"visibleControls\":257,\"scoreViewport\":true,\"physicalPageService\":true,\"crossPageFlowService\":true,\"publicationProfile\":\"staff|A4|portrait|15|1|0-8\",\"commandGroups\":16,\"allControlsConnected\":true,\"canonicalModel\":true,\"directApi\":true,\"fourVoiceLayers\":true,\"independentModels\":0,\"partCount\":1,\"measureCount\":8,\"eventCount\":32,\"fourLayerPlayback\":true,\"midiModes\":true}"
+    },
+    {
+      "name": "No legacy selectors",
+      "status": "PASS",
+      "details": "{\"build\":43,\"mounted\":true,\"tabs\":6,\"activePanels\":1,\"legacySelectors\":0,\"visibleControls\":257,\"scoreViewport\":true,\"physicalPageService\":true,\"crossPageFlowService\":true,\"publicationProfile\":\"staff|A4|portrait|15|1|0-8\",\"commandGroups\":16,\"allControlsConnected\":true,\"canonicalModel\":true,\"directApi\":true,\"fourVoiceLayers\":true,\"independentModels\":0,\"partCount\":1,\"measureCount\":8,\"eventCount\":32,\"fourLayerPlayback\":true,\"midiModes\":true}"
+    },
+    {
+      "name": "Six work-area tabs",
+      "status": "PASS",
+      "details": "{\"build\":43,\"mounted\":true,\"tabs\":6,\"activePanels\":1,\"legacySelectors\":0,\"visibleControls\":257,\"scoreViewport\":true,\"physicalPageService\":true,\"crossPageFlowService\":true,\"publicationProfile\":\"staff|A4|portrait|15|1|0-8\",\"commandGroups\":16,\"allControlsConnected\":true,\"canonicalModel\":true,\"directApi\":true,\"fourVoiceLayers\":true,\"independentModels\":0,\"partCount\":1,\"measureCount\":8,\"eventCount\":32,\"fourLayerPlayback\":true,\"midiModes\":true}"
+    },
+    {
+      "name": "One active panel",
+      "status": "PASS",
+      "details": "{\"build\":43,\"mounted\":true,\"tabs\":6,\"activePanels\":1,\"legacySelectors\":0,\"visibleControls\":257,\"scoreViewport\":true,\"physicalPageService\":true,\"crossPageFlowService\":true,\"publicationProfile\":\"staff|A4|portrait|15|1|0-8\",\"commandGroups\":16,\"allControlsConnected\":true,\"canonicalModel\":true,\"directApi\":true,\"fourVoiceLayers\":true,\"independentModels\":0,\"partCount\":1,\"measureCount\":8,\"eventCount\":32,\"fourLayerPlayback\":true,\"midiModes\":true}"
+    },
+    {
+      "name": "Visible score viewport",
+      "status": "PASS",
+      "details": "{\"build\":43,\"mounted\":true,\"tabs\":6,\"activePanels\":1,\"legacySelectors\":0,\"visibleControls\":257,\"scoreViewport\":true,\"physicalPageService\":true,\"crossPageFlowService\":true,\"publicationProfile\":\"staff|A4|portrait|15|1|0-8\",\"commandGroups\":16,\"allControlsConnected\":true,\"canonicalModel\":true,\"directApi\":true,\"fourVoiceLayers\":true,\"independentModels\":0,\"partCount\":1,\"measureCount\":8,\"eventCount\":32,\"fourLayerPlayback\":true,\"midiModes\":true}"
+    },
+    {
+      "name": "All commands connected",
+      "status": "PASS",
+      "details": "{\"build\":43,\"mounted\":true,\"tabs\":6,\"activePanels\":1,\"legacySelectors\":0,\"visibleControls\":257,\"scoreViewport\":true,\"physicalPageService\":true,\"crossPageFlowService\":true,\"publicationProfile\":\"staff|A4|portrait|15|1|0-8\",\"commandGroups\":16,\"allControlsConnected\":true,\"canonicalModel\":true,\"directApi\":true,\"fourVoiceLayers\":true,\"independentModels\":0,\"partCount\":1,\"measureCount\":8,\"eventCount\":32,\"fourLayerPlayback\":true,\"midiModes\":true}"
+    },
+    {
+      "name": "Window shell and score workspace stay inside the viewport",
+      "status": "PASS",
+      "details": "{\"innerWidth\":1600,\"areaLeft\":304,\"areaRight\":1600,\"areaWidth\":1296,\"shellRight\":1600,\"shellWidth\":1600}"
+    },
+    {
+      "name": "Note command changes canonical score",
+      "status": "PASS",
+      "details": "before=32;after=33"
+    },
+    {
+      "name": "Independent Voice 2 entry",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "name": "Build 42 keypad performs safe tied barline entry",
+      "status": "PASS",
+      "details": "{\"before\":2,\"after\":4,\"entered\":[{\"start\":3,\"duration\":1,\"tieStart\":true,\"tieStop\":false},{\"start\":4,\"duration\":1,\"tieStart\":false,\"tieStop\":true}],\"tie\":true,\"cursor\":5,\"activeDuration\":\"2\",\"activeVoice\":\"1\",\"caret\":true}"
+    },
+    {
+      "name": "Build 42 keypad mirrors active duration and voice",
+      "status": "PASS",
+      "details": "{\"before\":2,\"after\":4,\"entered\":[{\"start\":3,\"duration\":1,\"tieStart\":true,\"tieStop\":false},{\"start\":4,\"duration\":1,\"tieStart\":false,\"tieStop\":true}],\"tie\":true,\"cursor\":5,\"activeDuration\":\"2\",\"activeVoice\":\"1\",\"caret\":true}"
+    },
+    {
+      "name": "Build 42 renders a visible insertion caret",
+      "status": "PASS",
+      "details": "{\"before\":2,\"after\":4,\"entered\":[{\"start\":3,\"duration\":1,\"tieStart\":true,\"tieStop\":false},{\"start\":4,\"duration\":1,\"tieStart\":false,\"tieStop\":true}],\"tie\":true,\"cursor\":5,\"activeDuration\":\"2\",\"activeVoice\":\"1\",\"caret\":true}"
+    },
+    {
+      "name": "Build 42 chord entry uses one onset and rejects duplicate pitch",
+      "status": "PASS",
+      "details": "{\"pitches\":[\"C4\",\"E4\"],\"beforeDuplicate\":6,\"afterDuplicate\":6,\"recoverableStatus\":\"Rest entered · next bar 3, beat 3\",\"persistentErrorVisible\":false,\"cursor\":10,\"restAtNine\":true}"
+    },
+    {
+      "name": "Build 42 recoverable input error does not leave a persistent failure banner",
+      "status": "PASS",
+      "details": "{\"pitches\":[\"C4\",\"E4\"],\"beforeDuplicate\":6,\"afterDuplicate\":6,\"recoverableStatus\":\"Rest entered · next bar 3, beat 3\",\"persistentErrorVisible\":false,\"cursor\":10,\"restAtNine\":true}"
+    },
+    {
+      "name": "Build 42 rest keypad advances the same staff caret",
+      "status": "PASS",
+      "details": "{\"pitches\":[\"C4\",\"E4\"],\"beforeDuplicate\":6,\"afterDuplicate\":6,\"recoverableStatus\":\"Rest entered · next bar 3, beat 3\",\"persistentErrorVisible\":false,\"cursor\":10,\"restAtNine\":true}"
+    },
+    {
+      "name": "Ornament command updates selected semantic note",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "name": "Technique command updates selected semantic note",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "name": "Build 43 creates a real 3:2 tuplet with retimed onsets",
+      "status": "PASS",
+      "details": "{\"semantic\":{\"tuplets\":[{\"start\":0,\"duration\":0.3333333333333333,\"actual\":3,\"normal\":2,\"beam\":\"begin\"},{\"start\":0.3333333333333333,\"duration\":0.3333333333333333,\"actual\":3,\"normal\":2,\"beam\":\"continue\"},{\"start\":0.6666666666666666,\"duration\":0.3333333333333333,\"actual\":3,\"normal\":2,\"beam\":\"end\"}],\"ties\":1,\"slurs\":1},\"rendered\":{\"beams\":1,\"tupletNumbers\":1,\"ties\":1,\"slurs\":1},\"xml\":{\"tuplet\":true,\"beam\":true,\"tie\":true,\"slur\":true},\"scoreErrors\":[]}"
+    },
+    {
+      "name": "Build 43 creates grouped semantic beams",
+      "status": "PASS",
+      "details": "{\"semantic\":{\"tuplets\":[{\"start\":0,\"duration\":0.3333333333333333,\"actual\":3,\"normal\":2,\"beam\":\"begin\"},{\"start\":0.3333333333333333,\"duration\":0.3333333333333333,\"actual\":3,\"normal\":2,\"beam\":\"continue\"},{\"start\":0.6666666666666666,\"duration\":0.3333333333333333,\"actual\":3,\"normal\":2,\"beam\":\"end\"}],\"ties\":1,\"slurs\":1},\"rendered\":{\"beams\":1,\"tupletNumbers\":1,\"ties\":1,\"slurs\":1},\"xml\":{\"tuplet\":true,\"beam\":true,\"tie\":true,\"slur\":true},\"scoreErrors\":[]}"
+    },
+    {
+      "name": "Build 43 creates strict ties and phrase slurs",
+      "status": "PASS",
+      "details": "{\"semantic\":{\"tuplets\":[{\"start\":0,\"duration\":0.3333333333333333,\"actual\":3,\"normal\":2,\"beam\":\"begin\"},{\"start\":0.3333333333333333,\"duration\":0.3333333333333333,\"actual\":3,\"normal\":2,\"beam\":\"continue\"},{\"start\":0.6666666666666666,\"duration\":0.3333333333333333,\"actual\":3,\"normal\":2,\"beam\":\"end\"}],\"ties\":1,\"slurs\":1},\"rendered\":{\"beams\":1,\"tupletNumbers\":1,\"ties\":1,\"slurs\":1},\"xml\":{\"tuplet\":true,\"beam\":true,\"tie\":true,\"slur\":true},\"scoreErrors\":[]}"
+    },
+    {
+      "name": "Build 43 renders beams, tuplets, ties and slurs on the staff",
+      "status": "PASS",
+      "details": "{\"semantic\":{\"tuplets\":[{\"start\":0,\"duration\":0.3333333333333333,\"actual\":3,\"normal\":2,\"beam\":\"begin\"},{\"start\":0.3333333333333333,\"duration\":0.3333333333333333,\"actual\":3,\"normal\":2,\"beam\":\"continue\"},{\"start\":0.6666666666666666,\"duration\":0.3333333333333333,\"actual\":3,\"normal\":2,\"beam\":\"end\"}],\"ties\":1,\"slurs\":1},\"rendered\":{\"beams\":1,\"tupletNumbers\":1,\"ties\":1,\"slurs\":1},\"xml\":{\"tuplet\":true,\"beam\":true,\"tie\":true,\"slur\":true},\"scoreErrors\":[]}"
+    },
+    {
+      "name": "Build 43 exports rhythmic notation to MusicXML",
+      "status": "PASS",
+      "details": "{\"semantic\":{\"tuplets\":[{\"start\":0,\"duration\":0.3333333333333333,\"actual\":3,\"normal\":2,\"beam\":\"begin\"},{\"start\":0.3333333333333333,\"duration\":0.3333333333333333,\"actual\":3,\"normal\":2,\"beam\":\"continue\"},{\"start\":0.6666666666666666,\"duration\":0.3333333333333333,\"actual\":3,\"normal\":2,\"beam\":\"end\"}],\"ties\":1,\"slurs\":1},\"rendered\":{\"beams\":1,\"tupletNumbers\":1,\"ties\":1,\"slurs\":1},\"xml\":{\"tuplet\":true,\"beam\":true,\"tie\":true,\"slur\":true},\"scoreErrors\":[]}"
+    },
+    {
+      "name": "Fermata command updates selected semantic note",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "name": "Sol-fa syllable edits the selected staff note",
+      "status": "PASS",
+      "details": "[{\"midi\":55,\"pitch\":\"G3\",\"syllable\":\"s\"}]"
+    },
+    {
+      "name": "Sol-fa passage creates authoritative Voice 4 events",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "name": "Staff playback and Sol-fa verification passes",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "name": "Optional Sol-fa staff overlay is stored in score settings",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "name": "Multi-verse lyric entry stores verse as metadata",
+      "status": "PASS",
+      "details": "[{\"id\":\"lyric-ms42pitt-2eu\",\"noteId\":\"note-ms42pitb-2c6\",\"partId\":\"part-ms42piqy-24r\",\"staffId\":null,\"voiceId\":4,\"verse\":2,\"lineType\":\"lyric\",\"text\":\"Rejoice\",\"syllabic\":\"single\",\"hyphenState\":\"none\",\"melisma\":false,\"extensionState\":\"none\",\"elision\":false,\"offsetX\":0,\"offsetY\":0,\"styleId\":\"lyrics-default\"},{\"id\":\"lyric-ms42pitt-2ev\",\"noteId\":\"note-ms42pitb-2cf\",\"partId\":\"part-ms42piqy-24r\",\"staffId\":null,\"voiceId\":4,\"verse\":2,\"lineType\":\"lyric\",\"text\":\"Rejoice\",\"syllabic\":\"single\",\"hyphenState\":\"none\",\"melisma\":false,\"extensionState\":\"none\",\"elision\":false,\"offsetX\":0,\"offsetY\":0,\"styleId\":\"lyrics-default\"},{\"id\":\"lyric-ms42pitt-2ew\",\"noteId\":\"note-ms42pitb-2co\",\"partId\":\"part-ms42piqy-24r\",\"staffId\":null,\"voiceId\":4,\"verse\":2,\"lineType\":\"lyric\",\"text\":\"Rejoice\",\"syllabic\":\"single\",\"hyphenState\":\"none\",\"melisma\":false,\"extensionState\":\"none\",\"elision\":false,\"offsetX\":0,\"offsetY\":0,\"styleId\":\"lyrics-default\"},{\"id\":\"lyric-ms42pitt-2ex\",\"noteId\":\"note-ms42pitc-2cx\",\"partId\":\"part-ms42piqy-24r\",\"staffId\":null,\"voiceId\":4,\"verse\":2,\"lineType\":\"lyric\",\"text\":\"Rejoice\",\"syllabic\":\"single\",\"hyphenState\":\"none\",\"melisma\":false,\"extensionState\":\"none\",\"elision\":false,\"offsetX\":0,\"offsetY\":0,\"styleId\":\"lyrics-default\"},{\"id\":\"lyric-ms42pitt-2ey\",\"noteId\":\"note-ms42pitc-2d6\",\"partId\":\"part-ms42piqy-24r\",\"staffId\":null,\"voiceId\":4,\"verse\":2,\"lineType\":\"lyric\",\"text\":\"Rejoice\",\"syllabic\":\"single\",\"hyphenState\":\"none\",\"melisma\":false,\"extensionState\":\"none\",\"elision\":false,\"offsetX\":0,\"offsetY\":0,\"styleId\":\"lyrics-default\"},{\"id\":\"lyric-ms42pitt-2ez\",\"noteId\":\"note-ms42pitc-2df\",\"partId\":\"part-ms42piqy-24r\",\"staffId\":null,\"voiceId\":4,\"verse\":2,\"lineType\":\"lyric\",\"text\":\"Rejoice\",\"syllabic\":\"single\",\"hyphenState\":\"none\",\"melisma\":false,\"extensionState\":\"none\",\"elision\":false,\"offsetX\":0,\"offsetY\":0,\"styleId\":\"lyrics-default\"},{\"id\":\"lyric-ms42pitt-2f0\",\"noteId\":\"note-ms42pitc-2do\",\"partId\":\"part-ms42piqy-24r\",\"staffId\":null,\"voiceId\":4,\"verse\":2,\"lineType\":\"lyric\",\"text\":\"Rejoice\",\"syllabic\":\"single\",\"hyphenState\":\"none\",\"melisma\":false,\"extensionState\":\"none\",\"elision\":false,\"offsetX\":0,\"offsetY\":0,\"styleId\":\"lyrics-default\"},{\"id\":\"lyric-ms42pitt-2f1\",\"noteId\":\"note-ms42pitc-2dx\",\"partId\":\"part-ms42piqy-24r\",\"staffId\":null,\"voiceId\":4,\"verse\":2,\"lineType\":\"lyric\",\"text\":\"Rejoice\",\"syllabic\":\"single\",\"hyphenState\":\"none\",\"melisma\":false,\"extensionState\":\"none\",\"elision\":false,\"offsetX\":0,\"offsetY\":0,\"styleId\":\"lyrics-default\"}]"
+    },
+    {
+      "name": "Publication hierarchy renders semantic metadata",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "name": "Publication text position persists in semantic layout",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "name": "Page-scoped text is visible and semantic",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "name": "Lyric command updates score",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "name": "Piano panel is hidden by default",
+      "status": "PASS",
+      "details": "{\"height\":587.8125,\"hidden\":true}"
+    },
+    {
+      "name": "Docked piano panel opens below score without overlay",
+      "status": "PASS",
+      "details": "{\"before\":{\"height\":587.8125,\"hidden\":true},\"after\":{\"hidden\":false,\"scoreHeight\":363.8125,\"panelHeight\":224,\"expanded\":\"true\"}}"
+    },
+    {
+      "name": "Piano chord enters one deduplicated semantic chord in active Voice 3",
+      "status": "PASS",
+      "details": "{\"before\":16,\"after\":19,\"count\":3,\"midis\":[60,64,67],\"voices\":[3,3,3],\"chords\":[\"chord-ms42piwk-2j4\"],\"selected\":3}"
+    },
+    {
+      "name": "Piano selection is reflected on visible keys",
+      "status": "PASS",
+      "details": "{\"before\":16,\"after\":19,\"count\":3,\"midis\":[60,64,67],\"voices\":[3,3,3],\"chords\":[\"chord-ms42piwk-2j4\"],\"selected\":3}"
+    },
+    {
+      "name": "Piano audition mode does not create score events",
+      "status": "PASS",
+      "details": "{\"before\":19,\"after\":19,\"inputMode\":false}"
+    },
+    {
+      "name": "Piano panel collapses and returns score space",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "name": "Count-in and metronome options reach semantic transport",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "name": "Measure navigation moves to exact measure boundary",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "name": "Pause preserves playback position",
+      "status": "PASS",
+      "details": "{\"loop\":false,\"loopStart\":0,\"loopEnd\":32,\"metronome\":true,\"countInMeasures\":2,\"paused\":true,\"layerMix\":{\"1\":{\"muted\":false,\"solo\":false,\"volume\":1},\"2\":{\"muted\":false,\"solo\":false,\"volume\":1},\"3\":{\"muted\":false,\"solo\":false,\"volume\":1},\"4\":{\"muted\":false,\"solo\":false,\"volume\":1}},\"playing\":false,\"beat\":1.75}"
+    },
+    {
+      "name": "MIDI permission failure is visible and nonfatal",
+      "status": "PASS",
+      "details": "{\"status\":\"permission-denied\",\"message\":\"MIDI permission failed: Permission denied for reliability test\",\"errorVisible\":true}"
+    },
+    {
+      "name": "Web MIDI output schedules note-on and note-off messages",
+      "status": "PASS",
+      "details": "{\"device\":\"preview-output\",\"messages\":[{\"data\":[144,55,88],\"timestamp\":784.0999999977648},{\"data\":[128,55,0],\"timestamp\":992.4333333310981},{\"data\":[144,60,96],\"timestamp\":784.0999999977648},{\"data\":[128,60,0],\"timestamp\":1409.0999999977648},{\"data\":[144,64,96],\"timestamp\":784.0999999977648},{\"data\":[128,64,0],\"timestamp\":1409.0999999977648},{\"data\":[144,67,96],\"timestamp\":784.0999999977648},{\"data\":[128,67,0],\"timestamp\":1409.0999999977648},{\"data\":[144,60,88],\"timestamp\":784.0999999977648},{\"data\":[128,60,0],\"timestamp\":1409.0999999977648},{\"data\":[144,62,88],\"timestamp\":992.5333333325882},{\"data\":[128,62,0],\"timestamp\":1200.8666666659215},{\"data\":[144,64,88],\"timestamp\":1200.8666666659215},{\"data\":[128,64,0],\"timestamp\":1409.199999999255},{\"data\":[144,62,88],\"timestamp\":1409.199999999255},{\"data\":[128,62,0],\"timestamp\":2034.199999999255},{\"data\":[144,67,88],\"timestamp\":2034.199999999255},{\"data\":[128,67,0],\"timestamp\":2659.199999999255},{\"data\":[144,64,88],\"timestamp\":2034.199999999255},{\"data\":[128,64,0],\"timestamp\":2659.199999999255},{\"data\":[144,67,88],\"timestamp\":2659.199999999255},{\"data\":[128,67,0],\"timestamp\":3284.199999999255},{\"data\":[144,65,88],\"timestamp\":2659.199999999255},{\"data\":[128,65,0],\"timestamp\":3284.199999999255},{\"data\":[144,69,88],\"timestamp\":3284.199999999255},{\"data\":[128,69,0],\"timestamp\":3909.199999999255},{\"data\":[144,67,88],\"timestamp\":3284.199999999255},{\"data\":[128,67,0],\"timestamp\":3909.199999999255},{\"data\":[144,71,88],\"timestamp\":3909.199999999255},{\"data\":[128,71,0],\"timestamp\":4534.199999999255},{\"data\":[144,69,88],\"timestamp\":3909.199999999255},{\"data\":[128,69,0],\"timestamp\":4534.300000000745},{\"data\":[144,72,88],\"timestamp\":4534.300000000745},{\"data\":[128,72,0],\"timestamp\":5159.300000000745},{\"data\":[144,71,88],\"timestamp\":4534.300000000745},{\"data\":[128,71,0],\"timestamp\":5159.300000000745},{\"data\":[144,72,88],\"timestamp\":5159.300000000745},{\"data\":[128,72,0],\"timestamp\":5784.300000000745}],\"status\":\"Scheduled 19 notes to MIDI output\"}"
+    },
+    {
+      "name": "Print preview reaches isolated desktop service",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "name": "Dedicated Tonic Sol-fa page",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "name": "Save reaches desktop service",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "name": "MusicXML export reaches desktop service",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "name": "MIDI export reaches desktop service",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "name": "PDF command reaches desktop service",
+      "status": "PASS",
+      "details": ""
+    },
+    {
+      "name": "Browser PDF signature",
+      "status": "PASS",
+      "details": "101177"
+    },
+    {
+      "name": "Official colour identity",
+      "status": "PASS",
+      "details": "[\"#06152f\",\"#1d64c8\",\"#d9a928\"]"
+    },
+    {
+      "name": "No runtime exceptions",
+      "status": "PASS",
+      "details": "[]"
+    },
+    {
+      "name": "No console errors",
+      "status": "PASS",
+      "details": "[]"
+    }
+  ],
+  "exceptions": [],
+  "consoleErrors": []
+}
