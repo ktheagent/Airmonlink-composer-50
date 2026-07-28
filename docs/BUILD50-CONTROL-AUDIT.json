@@ -1,0 +1,279 @@
+{
+  "schemaVersion": 1,
+  "buildNumber": 50,
+  "version": "1.3.0",
+  "generatedAt": "2026-07-28T22:41:03.980Z",
+  "totals": {
+    "controls": 105,
+    "registered": 105,
+    "productionEnabled": 71,
+    "centrallyHidden": 34
+  },
+  "gates": {
+    "everyControlRegistered": true,
+    "everyControlHasExecutionPath": true,
+    "noIncompleteControlExposed": true
+  },
+  "missingRegistry": [],
+  "missingExecution": [],
+  "exposedIncomplete": [],
+  "productionCommands": [
+    "newScore",
+    "open",
+    "save",
+    "saveAs",
+    "exit",
+    "showRecent",
+    "showRecovery",
+    "showSettings",
+    "undo",
+    "redo",
+    "selectPrevious",
+    "selectNext",
+    "addNote",
+    "addRest",
+    "addChordTone",
+    "addThird",
+    "addFifth",
+    "dotSelected",
+    "tripletSelected",
+    "deleteSelection",
+    "pitchDown",
+    "pitchUp",
+    "octaveDown",
+    "octaveUp",
+    "appendMeasure",
+    "insertMeasure",
+    "removeMeasure",
+    "tie",
+    "slur",
+    "removeSpanners",
+    "staccato",
+    "accent",
+    "tenuto",
+    "marcato",
+    "trill",
+    "turn",
+    "fermata",
+    "applyTechnique",
+    "beamSelected",
+    "beamAuto",
+    "removeBeams",
+    "rewind",
+    "pause",
+    "resume",
+    "stop",
+    "applyLoop",
+    "jumpMeasure",
+    "resetLayerMix",
+    "printPreview",
+    "exportPdf",
+    "exportMusicXml",
+    "exportMxl",
+    "exportMidi",
+    "applyPublication",
+    "applyPublicationLayout",
+    "resetPublicationLayout",
+    "applyPageSettings",
+    "addPageText",
+    "showStaff",
+    "showSolfa",
+    "verifySolfa",
+    "zoomOut",
+    "zoomReset",
+    "zoomIn",
+    "fitWidth",
+    "fitPage",
+    "previousPage",
+    "nextPage",
+    "togglePianoPanel",
+    "focusScore",
+    "collapsePianoPanel"
+  ],
+  "deferredCommands": [
+    {
+      "id": "copy",
+      "status": "PARTIALLY FUNCTIONAL",
+      "reason": "A renderer or engine path exists, but complete staff interaction, context gating, visual proof, persistence, and real-user evidence are incomplete."
+    },
+    {
+      "id": "paste",
+      "status": "PARTIALLY FUNCTIONAL",
+      "reason": "A renderer or engine path exists, but complete staff interaction, context gating, visual proof, persistence, and real-user evidence are incomplete."
+    },
+    {
+      "id": "applyScoreSetup",
+      "status": "PARTIALLY FUNCTIONAL",
+      "reason": "A renderer or engine path exists, but complete staff interaction, context gating, visual proof, persistence, and real-user evidence are incomplete."
+    },
+    {
+      "id": "addPart",
+      "status": "PARTIALLY FUNCTIONAL",
+      "reason": "A renderer or engine path exists, but complete staff interaction, context gating, visual proof, persistence, and real-user evidence are incomplete."
+    },
+    {
+      "id": "applyPart",
+      "status": "PARTIALLY FUNCTIONAL",
+      "reason": "A renderer or engine path exists, but complete staff interaction, context gating, visual proof, persistence, and real-user evidence are incomplete."
+    },
+    {
+      "id": "removePart",
+      "status": "PARTIALLY FUNCTIONAL",
+      "reason": "A renderer or engine path exists, but complete staff interaction, context gating, visual proof, persistence, and real-user evidence are incomplete."
+    },
+    {
+      "id": "repeatStart",
+      "status": "PARTIALLY FUNCTIONAL",
+      "reason": "A renderer or engine path exists, but complete staff interaction, context gating, visual proof, persistence, and real-user evidence are incomplete."
+    },
+    {
+      "id": "repeatEnd",
+      "status": "PARTIALLY FUNCTIONAL",
+      "reason": "A renderer or engine path exists, but complete staff interaction, context gating, visual proof, persistence, and real-user evidence are incomplete."
+    },
+    {
+      "id": "systemBreak",
+      "status": "PARTIALLY FUNCTIONAL",
+      "reason": "A renderer or engine path exists, but complete staff interaction, context gating, visual proof, persistence, and real-user evidence are incomplete."
+    },
+    {
+      "id": "pageBreak",
+      "status": "PARTIALLY FUNCTIONAL",
+      "reason": "A renderer or engine path exists, but complete staff interaction, context gating, visual proof, persistence, and real-user evidence are incomplete."
+    },
+    {
+      "id": "applyDynamic",
+      "status": "PARTIALLY FUNCTIONAL",
+      "reason": "A renderer or engine path exists, but complete staff interaction, context gating, visual proof, persistence, and real-user evidence are incomplete."
+    },
+    {
+      "id": "copyToLayer",
+      "status": "PARTIALLY FUNCTIONAL",
+      "reason": "A renderer or engine path exists, but complete staff interaction, context gating, visual proof, persistence, and real-user evidence are incomplete."
+    },
+    {
+      "id": "replaceSelection",
+      "status": "PARTIALLY FUNCTIONAL",
+      "reason": "A renderer or engine path exists, but complete staff interaction, context gating, visual proof, persistence, and real-user evidence are incomplete."
+    },
+    {
+      "id": "addChordSymbol",
+      "status": "PARTIALLY FUNCTIONAL",
+      "reason": "A renderer or engine path exists, but complete staff interaction, context gating, visual proof, persistence, and real-user evidence are incomplete."
+    },
+    {
+      "id": "addTextAnnotation",
+      "status": "PARTIALLY FUNCTIONAL",
+      "reason": "A renderer or engine path exists, but complete staff interaction, context gating, visual proof, persistence, and real-user evidence are incomplete."
+    },
+    {
+      "id": "applyLyric",
+      "status": "PARTIALLY FUNCTIONAL",
+      "reason": "A renderer or engine path exists, but complete staff interaction, context gating, visual proof, persistence, and real-user evidence are incomplete."
+    },
+    {
+      "id": "applyLyricsParagraph",
+      "status": "PARTIALLY FUNCTIONAL",
+      "reason": "A renderer or engine path exists, but complete staff interaction, context gating, visual proof, persistence, and real-user evidence are incomplete."
+    },
+    {
+      "id": "copyLyricVerse",
+      "status": "PARTIALLY FUNCTIONAL",
+      "reason": "A renderer or engine path exists, but complete staff interaction, context gating, visual proof, persistence, and real-user evidence are incomplete."
+    },
+    {
+      "id": "deleteLyricVerse",
+      "status": "PARTIALLY FUNCTIONAL",
+      "reason": "A renderer or engine path exists, but complete staff interaction, context gating, visual proof, persistence, and real-user evidence are incomplete."
+    },
+    {
+      "id": "replaceLyrics",
+      "status": "PARTIALLY FUNCTIONAL",
+      "reason": "A renderer or engine path exists, but complete staff interaction, context gating, visual proof, persistence, and real-user evidence are incomplete."
+    },
+    {
+      "id": "applyLyricOffset",
+      "status": "PARTIALLY FUNCTIONAL",
+      "reason": "A renderer or engine path exists, but complete staff interaction, context gating, visual proof, persistence, and real-user evidence are incomplete."
+    },
+    {
+      "id": "resetLyricOffset",
+      "status": "PARTIALLY FUNCTIONAL",
+      "reason": "A renderer or engine path exists, but complete staff interaction, context gating, visual proof, persistence, and real-user evidence are incomplete."
+    },
+    {
+      "id": "play",
+      "status": "PARTIALLY FUNCTIONAL",
+      "reason": "A renderer or engine path exists, but complete staff interaction, context gating, visual proof, persistence, and real-user evidence are incomplete."
+    },
+    {
+      "id": "enableMidi",
+      "status": "BLOCKED",
+      "reason": "Requires real Windows MIDI permission and hardware verification."
+    },
+    {
+      "id": "startMidiRecord",
+      "status": "BLOCKED",
+      "reason": "Requires a connected physical MIDI input and Windows verification."
+    },
+    {
+      "id": "stopMidiRecord",
+      "status": "BLOCKED",
+      "reason": "Requires an active physical MIDI recording session."
+    },
+    {
+      "id": "disconnectMidi",
+      "status": "BLOCKED",
+      "reason": "Requires a connected physical MIDI input."
+    },
+    {
+      "id": "enableMidiOutput",
+      "status": "BLOCKED",
+      "reason": "Requires real Windows MIDI output permission and hardware verification."
+    },
+    {
+      "id": "playMidiOutput",
+      "status": "BLOCKED",
+      "reason": "Requires a connected physical MIDI output."
+    },
+    {
+      "id": "stopMidiOutput",
+      "status": "BLOCKED",
+      "reason": "Requires a connected physical MIDI output."
+    },
+    {
+      "id": "exportPng",
+      "status": "PARTIALLY FUNCTIONAL",
+      "reason": "A renderer or engine path exists, but complete staff interaction, context gating, visual proof, persistence, and real-user evidence are incomplete."
+    },
+    {
+      "id": "print",
+      "status": "BROKEN",
+      "reason": "User recording shows print cancellation surfaced as an application failure; cancellation and genuine print failure are not separated."
+    },
+    {
+      "id": "applySolfaSyllable",
+      "status": "PARTIALLY FUNCTIONAL",
+      "reason": "A renderer or engine path exists, but complete staff interaction, context gating, visual proof, persistence, and real-user evidence are incomplete."
+    },
+    {
+      "id": "applySolfaPassage",
+      "status": "PARTIALLY FUNCTIONAL",
+      "reason": "A renderer or engine path exists, but complete staff interaction, context gating, visual proof, persistence, and real-user evidence are incomplete."
+    }
+  ],
+  "windowsPackaging": {
+    "unpackedApplicationCreated": true,
+    "installerCreated": false,
+    "portableCreated": false,
+    "evidence": "electron-builder created release/win-unpacked and entered NSIS generation.",
+    "blocker": "NSIS/portable generation stopped at spawn wine ENOENT; Windows execution verification is unavailable."
+  },
+  "releaseStatus": "IMPLEMENTED BUT NOT VERIFIED",
+  "releaseBlockers": [
+    "Chromium is unavailable, so browser smoke and viewport matrix validation cannot run.",
+    "Windows x64 unpacked application was created, but installer/portable generation requires Wine and all artifacts remain unverified on Windows.",
+    "Physical printing, MIDI hardware, accessibility assistive-technology, and real-user workflows require external hardware or manual evidence.",
+    "Three consecutive whole-system audit cycles have not passed."
+  ]
+}
