@@ -42,9 +42,8 @@ function prepareHarness() {
     .replace(/^\s*'--single-process',\s*$/gm, '')
     .replace(/^\s*'--no-zygote',\s*$/gm, '')
     .replace(
-      /^(\s*)(`?'--remote-debugging-port=)/gm,
-      "$1
-x'"
+      /^(\s*)([`']--remote-debugging-port=)/gm,
+      "$1'--remote-debugging-address=127.0.0.1',\n$1$2"
     )
     .replace(/attempt < 150/g, 'attempt < 300');
 
