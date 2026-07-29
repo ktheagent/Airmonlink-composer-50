@@ -19,10 +19,10 @@
     "pack": "electron-builder --dir",
     "dist:win": "electron-builder --win nsis portable --x64 --publish never",
     "preview": "node scripts/build-preview.js",
-    "browser-smoke": "node scripts/browser-smoke.js",
+    "browser-smoke": "node scripts/build50-browser-validation.js browser",
     "validate:full": "npm run validate && npm run performance && npm run preview && npm run browser-smoke && npm run viewport-matrix",
     "performance": "node scripts/performance-audit.js",
-    "viewport-matrix": "node scripts/viewport-matrix.js"
+    "viewport-matrix": "node scripts/build50-browser-validation.js viewport"
   },
   "devDependencies": {
     "electron": "^37.2.3",
