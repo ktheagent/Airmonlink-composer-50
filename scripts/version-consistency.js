@@ -11,11 +11,11 @@ eq(m.buildVersion,expected.buildVersion,'release metadata buildVersion'); eq(m.s
 eq(p.version,m.appVersion,'package.json version'); eq(p.buildNumber,m.buildNumber,'package.json buildNumber'); eq(p.buildVersion,m.buildVersion,'package.json buildVersion');
 eq(p.build.buildVersion,m.buildVersion,'electron-builder buildVersion'); eq(l.version,m.appVersion,'package-lock root version'); eq(l.packages[''].version,m.appVersion,'package-lock package version');
 for(const [name,value] of [['nsis artifactName',p.build.nsis.artifactName],['portable artifactName',p.build.portable.artifactName]]) if(!value.includes('Build50'))errors.push(`${name} is not Build50`);
-for(const value of [m.appVersion,String(m.buildNumber),m.buildVersion,m.setupFile,m.portableFile]) if(!w.includes(value))errors.push(`workflow does not generate/validate ${value}`);
-if(!ui.includes(m.buildVersion)&&!ui.includes(`Version ${m.appVersion}`)) errors.push('application-visible version is not Build 50');
+for(const token of ['release-metadata.json','$env:SETUP_FILE','$env:PORTABLE_FILE','$env:BUILD_VERSION','$env:BUILD_NUMBER',setup,portable]) if(!w.includes(token))errors.push(`workflow does not derive or validate ${token}`);
+if(!ui.includes('1.3.0 · Build 50')&&!ui.includes('Version 1.3.0 · Build 50')) errors.push('application-visible version is not 1.3.0 Build 50');
 const stale=/Build43|build43|BUILD43|1\.2\.3\.43|Airmonlink-Composer-1\.2\.3-Build43|AirmonlinkComposerBuild43/;
-const active=['package.json','release-metadata.json','.github/workflows/windows-build.yml','scripts/release-env.js','scripts/version-consistency.js','src/composer3/index.html','src/composer3/main.js'];
-for(const f of active) if(f!=='scripts/version-consistency.js'&&stale.test(t(f)))errors.push(`active stale Build 43 identity in ${f}`);
+const active=['package.json','release-metadata.json','.github/workflows/windows-build.yml','scripts/release-env.js','src/composer3/index.html','src/composer3/main.js'];
+for(const f of active) if(stale.test(t(f)))errors.push(`active stale Build 43 identity in ${f}`);
 if(/continue-on-error:\s*true/i.test(w))errors.push('workflow hides failures with continue-on-error');
 if(!/if-no-files-found:\s*error/i.test(w))errors.push('release artifact upload is not fail-fast');
 if(errors.length){console.error('Build 50 version-consistency gate FAILED:\n- '+errors.join('\n- '));process.exit(1)}
