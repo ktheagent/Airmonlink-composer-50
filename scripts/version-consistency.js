@@ -1,0 +1,22 @@
+'use strict';
+const fs=require('fs'),path=require('path'); const root=path.resolve(__dirname,'..');
+const j=p=>JSON.parse(fs.readFileSync(path.join(root,p),'utf8')), t=p=>fs.readFileSync(path.join(root,p),'utf8');
+const m=j('release-metadata.json'), p=j('package.json'), l=j('package-lock.json'), w=t('.github/workflows/windows-build.yml'), ui=t('src/composer3/index.html');
+const expected={appVersion:'1.3.0',buildNumber:50,buildVersion:'1.3.0.50',productSlug:'Airmonlink-Composer'};
+const setup=`${expected.productSlug}-${expected.appVersion}-Build${expected.buildNumber}-Setup.exe`;
+const portable=`${expected.productSlug}-${expected.appVersion}-Build${expected.buildNumber}-Portable.exe`;
+const errors=[]; const eq=(a,b,n)=>{if(a!==b)errors.push(`${n}: expected ${b}, found ${a}`)};
+eq(m.appVersion,expected.appVersion,'release metadata appVersion'); eq(m.buildNumber,50,'release metadata buildNumber');
+eq(m.buildVersion,expected.buildVersion,'release metadata buildVersion'); eq(m.setupFile,setup,'release metadata setupFile'); eq(m.portableFile,portable,'release metadata portableFile');
+eq(p.version,m.appVersion,'package.json version'); eq(p.buildNumber,m.buildNumber,'package.json buildNumber'); eq(p.buildVersion,m.buildVersion,'package.json buildVersion');
+eq(p.build.buildVersion,m.buildVersion,'electron-builder buildVersion'); eq(l.version,m.appVersion,'package-lock root version'); eq(l.packages[''].version,m.appVersion,'package-lock package version');
+for(const [name,value] of [['nsis artifactName',p.build.nsis.artifactName],['portable artifactName',p.build.portable.artifactName]]) if(!value.includes('Build50'))errors.push(`${name} is not Build50`);
+for(const value of [m.appVersion,String(m.buildNumber),m.buildVersion,m.setupFile,m.portableFile]) if(!w.includes(value))errors.push(`workflow does not generate/validate ${value}`);
+if(!ui.includes(m.buildVersion)&&!ui.includes(`Version ${m.appVersion}`)) errors.push('application-visible version is not Build 50');
+const stale=/Build43|build43|BUILD43|1\.2\.3\.43|Airmonlink-Composer-1\.2\.3-Build43|AirmonlinkComposerBuild43/;
+const active=['package.json','release-metadata.json','.github/workflows/windows-build.yml','scripts/release-env.js','scripts/version-consistency.js','src/composer3/index.html','src/composer3/main.js'];
+for(const f of active) if(f!=='scripts/version-consistency.js'&&stale.test(t(f)))errors.push(`active stale Build 43 identity in ${f}`);
+if(/continue-on-error:\s*true/i.test(w))errors.push('workflow hides failures with continue-on-error');
+if(!/if-no-files-found:\s*error/i.test(w))errors.push('release artifact upload is not fail-fast');
+if(errors.length){console.error('Build 50 version-consistency gate FAILED:\n- '+errors.join('\n- '));process.exit(1)}
+console.log(JSON.stringify({status:'PASS',appVersion:m.appVersion,buildNumber:m.buildNumber,buildVersion:m.buildVersion,setupFile:setup,portableFile:portable}));
