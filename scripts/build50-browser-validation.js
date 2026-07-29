@@ -37,7 +37,27 @@ function prepareHarness() {
   source = source
     .split('Build 43').join('Build 50 regression')
     .split('build43').join('build50')
-    .split('BUILD43').join('BUILD50');
+    .split('BUILD43').join('BUILD50')
+    .replace(/'--headless',/g, "'--headless=new',")
+    .replace(/^\s*'--single-process',\s*$/gm, '')
+    .replace(/^\s*'--no-zygote',\s*$/gm, '')
+    .replace(
+      /^(\s*)(`?'--remote-debugging-port=)/gm,
+      "$1
+x'"
+    )
+    .replace(/attempt < 150/g, 'attempt < 300');
+
+  if (/--single-process|--no-zygote/.test(source)) {
+    throw new Error('Unsafe Chromium single-process flags remain in the generated Build 50 harness.');
+  }
+  if (!source.includes('--headless=new')) {
+    throw new Error('Generated Build 50 harness is not using modern Chromium headless mode.');
+  }
+  if (!source.includes('--remote-debugging-address=127.0.0.1')) {
+    throw new Error('Generated Build 50 harness is missing the loopback DevTools binding.');
+  }
+
   fs.writeFileSync(config.generated, source, 'utf8');
   fs.rmSync(config.report, { force: true });
 }
@@ -62,12 +82,15 @@ function validateReport(report) {
   if (!report || report.status !== 'PASS') {
     throw new Error(`${mode} validation report did not pass: ${JSON.stringify(report)}`);
   }
+
   if (mode === 'browser') {
     if (!Array.isArray(report.checks) || report.checks.length === 0) {
       throw new Error('Browser validation report contains no checks.');
     }
     const failed = report.checks.filter(item => item.status !== 'PASS');
-    if (failed.length) throw new Error(`Browser validation recorded failures: ${JSON.stringify(failed)}`);
+    if (failed.length) {
+      throw new Error(`Browser validation recorded failures: ${JSON.stringify(failed)}`);
+    }
   } else {
     if (!Array.isArray(report.scenarios) || report.scenarios.length !== 4) {
       throw new Error('Viewport validation did not record the four required scenarios.');
@@ -81,11 +104,18 @@ function validateReport(report) {
 
 async function main() {
   prepareHarness();
+
+  const childEnv = { ...process.env };
+  delete childEnv.DBUS_SESSION_BUS_ADDRESS;
+  if (mode === 'browser' && !childEnv.AIRMON_CDP_PORT) {
+    childEnv.AIRMON_CDP_PORT = String(10000 + (process.pid % 40000));
+  }
+
   const child = spawn(process.execPath, [config.generated], {
     cwd: root,
     stdio: 'inherit',
     detached: process.platform !== 'win32',
-    env: process.env
+    env: childEnv
   });
   const started = Date.now();
 
@@ -99,10 +129,12 @@ async function main() {
           await sleep(pollMs);
           continue;
         }
+
         if (report.status === 'FAIL') {
           terminateTree(child);
           validateReport(report);
         }
+
         if (report.status === 'PASS') {
           validateReport(report);
           terminateTree(child);
@@ -110,11 +142,13 @@ async function main() {
           return;
         }
       }
+
       if (child.exitCode !== null && !fs.existsSync(config.report)) {
         throw new Error(`${mode} validation exited with code ${child.exitCode} before writing a report.`);
       }
       await sleep(pollMs);
     }
+
     throw new Error(`${mode} validation exceeded the bounded ${timeoutMs} ms runtime.`);
   } finally {
     terminateTree(child);
